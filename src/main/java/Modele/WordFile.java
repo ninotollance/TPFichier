@@ -1,4 +1,5 @@
-import com.itextpdf.layout.element.Paragraph;
+package Modele;
+
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.util.Units;
 import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
@@ -31,7 +32,7 @@ public class WordFile implements Fichier {
     @Override
     public void writeFile() throws IOException {
         try {
-// ducument word vide
+        // ducument word vide
         XWPFDocument document = new XWPFDocument();
         // creer le doc dans le chemin spécifique
         // chemin relatif : dossierWord/doc.docx
