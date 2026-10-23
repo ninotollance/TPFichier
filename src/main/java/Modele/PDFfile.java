@@ -57,7 +57,7 @@ public class PDFfile implements Fichier {
         List<String> paroles = new ArrayList<>();
 
         //Récupérer du texte d'un fichier .txt
-        try (BufferedReader in = Files.newBufferedReader(Path.of("paroles.txt"), StandardCharsets.UTF_8)) {
+        try (BufferedReader in = Files.newBufferedReader(Path.of(text), StandardCharsets.UTF_8)) {
             String line;
             while ((line = in.readLine()) != null) {
                 paroles.add(line);
@@ -88,7 +88,7 @@ public class PDFfile implements Fichier {
         doc.add(new Paragraph("\n"));
 
         //Image du disque
-        String imageFile = "src/main/ressources/disque_we_are_the_champions.jpg";
+        String imageFile = "src/main/java/ressources/texte/disque_we_are_the_champions.jpg";
         ImageData data = ImageDataFactory.create(imageFile);
         Image img = new Image(data);
         img.scaleToFit(200, 200);

@@ -48,7 +48,7 @@ public class Main {
             Fichier f = null;
             switch (choix) {
                 case 1 -> f = new WordFile("fichier.docx");
-                case 2 -> f = new PDFfile("fichier.pdf");
+                case 2 -> f = new PDFfile("fichier.pdf", "src/main/java/ressources/texte/paroles.txt");
                 //case 3 -> f = new ExcelFile("statsF1.xlsx");
                 case 0 -> System.out.println("Au revoir ! ");
                 default -> System.out.println("Choix invalide !");
