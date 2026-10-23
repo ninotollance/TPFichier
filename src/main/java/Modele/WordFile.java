@@ -4,7 +4,9 @@ import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.util.Units;
 import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
 import org.apache.poi.xwpf.usermodel.*;
+import org.apache.poi.openxml4j.exceptions.*;
 
+import java.awt.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -31,6 +33,7 @@ public class WordFile implements Fichier {
 
     @Override
     public void writeFile() throws IOException {
+        EcrireFichier.ecrire();
         try {
         // ducument word vide
         XWPFDocument document = new XWPFDocument();
@@ -45,33 +48,28 @@ public class WordFile implements Fichier {
         paragraph.setAlignment(ParagraphAlignment.CENTER);
         XWPFRun run= paragraph.createRun();
         //ajout du titre - font-color- gras
-        run.setText("Faire du Word avec Java");
+        run.setText("Présentation cinéma");
         run.setFontFamily("Tahoma");
-        run.setColor("5DADE2");
+        run.setColor("B72818");
         run.setBold(true);
-        run.setFontSize(20);
+        run.setFontSize(30);
         //retour à la ligne
         run.addBreak();
         run.addBreak();
 
-        //insertion image
-        String imgFile= "src/main/resources/logo-Android-Histoire.jpg";
+        //Insertion image
+        String imgFile= "src/main/java/ressources/texte/NoContry.png";
         FileInputStream fi=new FileInputStream(imgFile);
 
-            run.addPicture(fi,XWPFDocument.PICTURE_TYPE_JPEG,imgFile, Units.toEMU(200),Units.toEMU(200));
-            run.addBreak();
-            //TODO aligner le paragraphe à gauche
-        XWPFRun run2= paragraph.createRun();
-        run2.setText("Le 14 mars 2004 , il récite les 22514 décimales du nombre PI"+
-                        "en 5heures 9 minutes et 24 secondes, établissant un nouveau record"+
-                " Européen.");
-        run2.addBreak();
-            run2.setText("Il est atteint du syndrome d'Asperger.");
-            run2.addBreak();
-            run2.setText("IL est polyglotte et a appris l'islandais en 3 semaines.");
-            run2.addBreak();
-            run2.setText("Qui suis-je?");
+        run.addPicture(fi,XWPFDocument.PICTURE_TYPE_JPEG,imgFile, Units.toEMU(200), Units.toEMU(200));
+        run.addBreak();
 
+        for (String ligne : LireFichier.lireLignes()) {
+            XWPFParagraph para = document.createParagraph();
+            XWPFRun runTexte = para.createRun();
+            runTexte.setText(ligne);
+        }
+        run.addBreak();
 
 
         document.write(monFile);
