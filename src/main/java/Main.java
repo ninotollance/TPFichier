@@ -3,26 +3,50 @@ import Modele.PDFfile;
 import Modele.WordFile;
 
 import java.io.IOException;
+import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int choix ;
 
-        try {
-            Fichier tab[]= new Fichier[2];
-            Fichier f1 = new WordFile("fichier.docx");
-            Fichier f2 = new PDFfile("fichier.pdf");
-            tab[0]=f1;
-            tab[1]=f2;
+        do {
+            System.out.println("\n Choisir un fichier ");
+            System.out.println("1. Word");
+            System.out.println("2. Pdf");
+            System.out.println("3. Excel");
+            System.out.println("4. Quitter");
+            choix = sc.nextInt();
 
-
-            for(Fichier f : tab) {
-                f.writeFile();
-
+            Fichier f = null;
+            switch (choix) {
+                case 1 -> f = new WordFile("fichier.docx");
+                case 2 -> f = new PDFfile("fichier.pdf");
+                //case 3 -> f = new ExcelFile("statsF1.xlsx");
+                case 0 -> System.out.println("Au revoir ! ");
+                default -> System.out.println("Choix invalide !");
             }
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            if (f != null) {
+                System.out.println("1. Ecrire");
+                System.out.println("2. Lire");
+                int numero = sc.nextInt();
+
+
+                try {
+                    switch (numero) {
+                        case 1 -> f.writeFile();
+                        case 2 -> f.readFile();
+                        default -> System.out.println("Action invalide");
+
+                    }
+                } catch (IOException e) {
+                    System.out.println("Erreur : " + e.getMessage());
+                }
+            }
+        } while (choix != 0);
+            sc.close();
+
     }
 }

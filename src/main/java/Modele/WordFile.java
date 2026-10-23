@@ -4,9 +4,7 @@ import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.util.Units;
 import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
 import org.apache.poi.xwpf.usermodel.*;
-import org.apache.poi.openxml4j.exceptions.*;
 
-import java.awt.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -33,7 +31,7 @@ public class WordFile implements Fichier {
 
     @Override
     public void writeFile() throws IOException {
-        EcrireFichier.ecrire();
+        EcrireFichierWord.ecrire();
         try {
         // ducument word vide
         XWPFDocument document = new XWPFDocument();
@@ -64,7 +62,7 @@ public class WordFile implements Fichier {
         run.addPicture(fi,XWPFDocument.PICTURE_TYPE_JPEG,imgFile, Units.toEMU(200), Units.toEMU(200));
         run.addBreak();
 
-        for (String ligne : LireFichier.lireLignes()) {
+        for (String ligne : LireFichierWord.lireLignes()) {
             XWPFParagraph para = document.createParagraph();
             XWPFRun runTexte = para.createRun();
             runTexte.setText(ligne);

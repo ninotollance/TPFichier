@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class LireFichier {
+public class LireFichierWord {
     public static List<String> lireLignes() throws IOException {
         Scanner lecteur;
         List<String> lignes = new ArrayList<>();
