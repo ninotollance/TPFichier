@@ -1,4 +1,5 @@
 import Modele.Fichier;
+import Modele.PDFfile;
 import Modele.WordFile;
 
 import java.io.IOException;
@@ -10,7 +11,7 @@ public class Main {
         try {
             Fichier tab[]= new Fichier[2];
             Fichier f1 = new WordFile("fichier.docx");
-            Fichier f2 = new PDFFile("fichier.pdf");
+            Fichier f2 = new PDFfile("fichier.pdf");
             tab[0]=f1;
             tab[1]=f2;
 
