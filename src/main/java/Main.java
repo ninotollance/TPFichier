@@ -1,5 +1,6 @@
 import Modele.Fichier;
 import Modele.PDFfile;
+import Modele.PowerPointFile;
 import Modele.WordFile;
 
 import java.io.IOException;
@@ -16,7 +17,8 @@ public class Main {
             System.out.println("1. Word");
             System.out.println("2. Pdf");
             System.out.println("3. Excel");
-            System.out.println("4. Quitter");
+            System.out.println("4. PowerPoint");
+            System.out.println("5. Quitter");
             choix = sc.nextInt();
 
             Fichier f = null;
@@ -24,7 +26,8 @@ public class Main {
                 case 1 -> f = new WordFile("fichier.docx");
                 case 2 -> f = new PDFfile("fichier.pdf", "src/main/java/ressources/texte/paroles.txt");
                 //case 3 -> f = new ExcelFile("statsF1.xlsx");
-                case 0 -> System.out.println("Au revoir ! ");
+                case 4 -> f = new PowerPointFile("fichier.ppt");
+                case 5 -> System.out.println("Au revoir ! ");
                 default -> System.out.println("Choix invalide !");
             }
 
