@@ -2,7 +2,7 @@ package Modele;
 
 import java.io.*;
 
-public class EcrireFichier {
+public class EcrireFichierWord {
     public static void ecrire() throws IOException {
 
         PrintWriter ecrire;
