@@ -9,11 +9,10 @@ public class Main {
 
         try {
             Fichier tab[]= new Fichier[2];
-            Fichier f3 = new WordFile("fichier.docx");
-            Fichier f4 = new WordFile("fichier.docx");
-            tab[0]=f3;
-
-
+            Fichier f1 = new WordFile("fichier.docx");
+            Fichier f2 = new PDFFile("fichier.pdf");
+            tab[0]=f1;
+            tab[1]=f2;
 
 
             for(Fichier f : tab) {
